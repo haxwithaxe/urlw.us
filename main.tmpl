@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<style>
+body {
+   text-align: center;
+   font-family: Sans,Arial;
+}
+div#title {
+   font-size: 255%;
+   margin-bottom: 5%;
+   margin-top: 4%;
+}
+.label {
+   margin-top: 2%;
+}
+#submit {
+   margin-top: 3%;
+}
+#shorturl {
+   margin-top: 3%;
+}
+</style>
+<!--HEAD-->
+</head>
+<body>
+<div id="title">
+URL Wus
+</div>
+<div id="form">
+<form name="urlform" action="<!--ACTION-->" method="POST" enctype="multipart/form-data">
+<div class="label" id="long">Long</div>
+<div class="input" id="long"><input name="longurl" type="text" size="50" maxlength="455" /></div>
+<div class="label" id="short">Short</div>
+<div class="input" id="short"><input name="shorturl" type="text" size="20" maxlength="55" /></div>
+<div class="button" id="submit"><input type="submit" value="submit" /></div>
+</form>
+</div>
+<div id="result">
+<!--RESULT-->
+</div>
+<div id="error">
+<!--ERROR-->
+</div>
+</body>
+</html>

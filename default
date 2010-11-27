@@ -1,0 +1,28 @@
+NameVirtualHost *
+<VirtualHost *>
+        ServerAdmin blackhole@hawax.us
+        ServerName      www.urlw.us
+        ServerAlias     urlw.us *.urlw.us
+
+        DocumentRoot /var/www/urlw.us/
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+        <Directory /var/www/urlw.us/>
+                DirectoryIndex cgi-bin/shorten.py
+                DirectorySlash Off
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+        ScriptAlias /cgi-bin/ /var/www/urlw.us/cgi-bin/
+        <Directory "/var/www/urlw.us/cgi-bin/">
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+</VirtualHost>
