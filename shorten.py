@@ -34,7 +34,7 @@ def get_short_name(gVars):
    short = ''.join(str(x) for x in random.sample(POP,LEN))
    if gVars['NAMECOUNT'] == 0:
       return short
-   elif os.path.exists(DIR+short):
+   elif os.path.exists(DIR+short+'.html'):
       gVars['NAMECOUNT'] += 1
       short = get_short_name(gVars)
    return short
@@ -49,7 +49,7 @@ if form.has_key('shorturl'):
          shorturl = get_short_name(gVars)
    else:
       shorturl = clean_url(form['shorturl'].value)
-      if os.path.exists(DIR+shorturl):
+      if os.path.exists(DIR+shorturl+'.html'):
          shorturl = get_short_name(gVars)
          ERROR = [True,'Name Taken']
 else:
