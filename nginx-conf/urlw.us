@@ -1,0 +1,32 @@
+#ORDER:1
+server {
+	listen 80;
+	listen [::]:80;
+	server_name urlw.us url.s *.urlw.us *.url.s;
+	root /home/hax/web/urlw.us;
+	
+	access_log /var/log/nginx/urlw.us.access.log;
+	error_log /var/log/nginx/urlw.us.error.log;
+
+	location = / { 
+		rewrite ^ /shorten.py? last;
+	}
+
+        include /etc/nginx/fragments/log-utils;
+	
+        location /shorten.py {
+                include /etc/nginx/fastcgi_params;
+                fastcgi_pass unix:/var/run/fcgiwrap.socket;
+        }
+
+	location / { 
+		# if you're just using wordpress and don't want extra rewrites
+		# then replace the word @rewrites with /index.php
+		try_files $uri $uri.html /shorten.py @rewrite;
+	}
+	
+	location @rewrite {
+                rewrite ^/(.*)$ /$1.html;
+        }
+
+}
