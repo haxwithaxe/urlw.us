@@ -2,6 +2,9 @@
 '''
 url shortener script
 '''
+__author__ = "haxwithaxe <me@haxwithaxe.net>"
+
+__license__ = "GPLv3"
 
 import os,sys,cgi,cgitb,random,string,re
 cgitb.enable()
